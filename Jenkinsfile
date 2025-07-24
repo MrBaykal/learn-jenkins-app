@@ -5,19 +5,19 @@ pipeline {
         stage('Build') {
             agent {
                 docker {
-                    image 'node:18'
+                    image 'node:18-alpine'
                     reuseNode true
                     label 'DOCKER'
                 }
             }
             steps {
-                cleanWs()
                 sh '''
-                    echo "🟢 Workspace temizlendi."
+                    ls -al
                     node --version
                     npm --version
                     npm ci
                     npm run build
+                    ls -al
                 '''
             }
         }
