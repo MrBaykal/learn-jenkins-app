@@ -1,5 +1,5 @@
 pipeline {
-    agent { label 'DOCKER' }
+    agent { label 'LINUX' }
 
     stages {
           stage('Build') {
@@ -12,6 +12,7 @@ pipeline {
             }
             steps {
                 sh '''
+                    cleanWs() 
                     ls -la
                     node --version
                     npm --version
