@@ -2,7 +2,7 @@ pipeline {
     agent { label 'LINUX' }
 
     stages {
-          stage('Build') {
+        stage('Build') {
             agent {
                 docker {
                     image 'node:18-alpine'
@@ -11,8 +11,9 @@ pipeline {
                 }
             }
             steps {
+                cleanWs()
                 sh '''
-                    CleanWs ()
+                    apk add --no-cache python3 make g++
                     ls -la
                     node --version
                     npm --version
