@@ -11,7 +11,6 @@ pipeline {
                 }
             }
             steps {
-                cleanWs()
                 sh '''
                     apk add --no-cache python3 make g++
                     ls -la
