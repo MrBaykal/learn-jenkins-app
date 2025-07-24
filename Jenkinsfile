@@ -5,20 +5,18 @@ pipeline {
         stage('Build') {
             agent {
                 docker {
-                    image 'node:18' 
+                    image 'node:18'
                     reuseNode true
                     label 'DOCKER'
                 }
             }
-            environment {
-                NPM_CONFIG_CACHE = '/tmp/.npm-cache'
-            }
             steps {
                 cleanWs()
                 sh '''
+                    echo "🟢 Workspace temizlendi."
                     node --version
                     npm --version
-                    npm ci --no-cache
+                    npm ci
                     npm run build
                 '''
             }
