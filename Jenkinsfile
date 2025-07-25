@@ -35,7 +35,7 @@ pipeline {
                     npm cache clean --force
 
                     echo "Install dependencies"
-                    npm ci
+                    npm install
 
                     echo "Build app"
                     npm run build
