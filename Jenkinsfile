@@ -13,6 +13,8 @@ pipeline {
             steps {
                 sh '''
                     ls -al
+                    npm cache clean --force
+                    npm ci
                     node --version
                     npm --version
                     npm ci
